@@ -5,7 +5,7 @@ import re
 
 def vet_nucleotide_sequence(sequence):
     """
-    Return None if `sequence` is a valid RNA or DNA sequence, else raise exception. 
+    Return None if `sequence` is a valid RNA or DNA sequence, else raise exception.
 
     Parameters
     ----------
@@ -71,7 +71,7 @@ def vet_nucleotide_sequence(sequence):
 
 def vet_codon(codon):
     """
-    Return None if `codon` is a valid RNA codon, else raise an exception. 
+    Return None if `codon` is a valid RNA codon, else raise an exception.
 
     Parameters
     ----------
@@ -195,7 +195,8 @@ def find_first_orf(sequence,
     # exactly. Change `orf_pattern_str` so that it will match any open reading
     # frame.
     # Read the docstring above for additional clues.
-    orf_pattern_str = r'(AUG)([AUCG]{3})*(UAG)|(AUG)([AUCG]{3})*(UAA)|(AUG)([AUCG]{3})*(UGA)'
+    # hardcoded_orf_pattern_str = r'AUG'+r'([AUCG]{3})*('+r'UAG|UAA|UGA'+r')'
+    orf_pattern_str = r'('+r'|'.join(starts)+r')([AUCG]{3})*('+r'|'.join(stops)+r')'
     ##########################################################################
 
     # Create the regular expression object
